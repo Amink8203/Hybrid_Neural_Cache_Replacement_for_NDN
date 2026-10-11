@@ -11,7 +11,7 @@ A hybrid cache replacement policy combining recent popularity, two LSTMs, and po
 ![Course](https://img.shields.io/badge/University%20of%20Tehran-Distributed%20Systems-0F766E)
 [![Checks](https://github.com/Amink8203/Hybrid_Neural_Cache_Replacement_for_NDN/actions/workflows/checks.yml/badge.svg)](https://github.com/Amink8203/Hybrid_Neural_Cache_Replacement_for_NDN/actions/workflows/checks.yml)
 
-[Quick start](#quick-start) · [Results](#results) · [Experiment details](docs/EXPERIMENTS.md) · [Report (فارسی)](report/report.pdf) · [Presentation](presentation/Hybrid_Neural_Cache_Replacement_for_NDN.pptx)
+[Quick start](#quick-start) · [Results](#results) · [Experiment details](docs/EXPERIMENTS.md) · [Report](report/report.pdf) · [Presentation](presentation/Hybrid_Neural_Cache_Replacement_for_NDN.pptx)
 
 </div>
 
@@ -19,7 +19,7 @@ A hybrid cache replacement policy combining recent popularity, two LSTMs, and po
 
 In Named Data Networking (NDN), consumers request content by name. A router can satisfy an Interest from its **Content Store**, saving a trip to the producer. The challenge is deciding which Data packet to evict when that store is full, especially as content popularity changes.
 
-This University of Tehran Distributed Systems final project implements a Python simulator and a hybrid retention policy. A causal, exponentially decayed popularity prior provides a starting point; a neural residual uses content names, router-local request history, and cache features to refine the ranking. Each network topology has its own model, with shared weights and independent state across its routers.
+This project implements a Python simulator and a hybrid retention policy. A causal, exponentially decayed popularity prior provides a starting point; a neural residual uses content names, router-local request history, and cache features to refine the ranking. Each network topology has its own model, with shared weights and independent state across its routers.
 
 The included confirmatory experiment achieves **74.81% mean cache hit ratio**, compared with **71.83% for LRU**: an improvement of **2.98 percentage points** across four topologies. These are results from one held-out synthetic trace, with seed 29.
 
@@ -155,9 +155,3 @@ To run checks and regenerate the figures:
 python -m unittest discover -s tests -v
 python scripts/make_figures.py
 ```
-
-## Course and credits
-
-Final project for the **Distributed Systems course, University of Tehran**.
-
-Project contributors, as credited in the original report: **امین آقاکثیری** ([Amink8203](https://github.com/Amink8203)) and **بابک حسینی محتشم**.
