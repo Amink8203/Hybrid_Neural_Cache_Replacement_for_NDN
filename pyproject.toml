@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ndn-neural-cache"
+version = "0.10.0"
+description = "Hybrid LSTM and policy-gradient cache replacement for Named Data Networking"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = ["numpy>=1.26,<3", "torch>=2.5,<3"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+
+[project.optional-dependencies]
+plots = ["matplotlib>=3.8,<4"]
+
+[project.scripts]
+ndn-neural-cache = "ndn_cache.cli:main"
+
+[project.urls]
+Repository = "https://github.com/Amink8203/Hybrid_Neural_Cache_Replacement_for_NDN"
+
+[tool.setuptools]
+packages = ["ndn_cache"]

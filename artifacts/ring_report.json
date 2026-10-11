@@ -1,0 +1,2890 @@
+{
+  "cache": {
+    "bytes_per_router": null,
+    "capacity_unit": "packets",
+    "equal_packet_size_experiment": true,
+    "items_per_router": 16,
+    "neural_replacement_shortlist": 8
+  },
+  "comparison": [
+    {
+      "byte_cache_hit_ratio": 0.7464,
+      "cache_hit_ratio": 0.7464,
+      "evictions": 2074,
+      "hop_savings_ratio": 0.7004950495049505,
+      "mean_retrieval_hops": 0.6292,
+      "policy": "neural",
+      "producer_fetches": 634,
+      "router_lookups": 4073,
+      "topology": "ring"
+    },
+    {
+      "byte_cache_hit_ratio": 0.7204,
+      "cache_hit_ratio": 0.7204,
+      "evictions": 2204,
+      "hop_savings_ratio": 0.6886900228484387,
+      "mean_retrieval_hops": 0.654,
+      "policy": "lru",
+      "producer_fetches": 699,
+      "router_lookups": 4135,
+      "topology": "ring"
+    },
+    {
+      "byte_cache_hit_ratio": 0.5808,
+      "cache_hit_ratio": 0.5808,
+      "evictions": 3438,
+      "hop_savings_ratio": 0.5178979436405179,
+      "mean_retrieval_hops": 1.0128,
+      "policy": "lfu",
+      "producer_fetches": 1048,
+      "router_lookups": 5032,
+      "topology": "ring"
+    },
+    {
+      "byte_cache_hit_ratio": 0.688,
+      "cache_hit_ratio": 0.688,
+      "evictions": 2489,
+      "hop_savings_ratio": 0.6498476770753998,
+      "mean_retrieval_hops": 0.7356,
+      "policy": "fifo",
+      "producer_fetches": 780,
+      "router_lookups": 4339,
+      "topology": "ring"
+    },
+    {
+      "byte_cache_hit_ratio": 0.7024,
+      "cache_hit_ratio": 0.7024,
+      "evictions": 2534,
+      "hop_savings_ratio": 0.634044173648134,
+      "mean_retrieval_hops": 0.7688,
+      "policy": "random",
+      "producer_fetches": 744,
+      "router_lookups": 4422,
+      "topology": "ring"
+    }
+  ],
+  "initialization": "identical seed and neural residual initial weights per topology",
+  "model_config": {
+    "context_hidden_dim": 64,
+    "context_layers": 1,
+    "dropout": 0.0,
+    "embedding_dim": 32,
+    "feature_dim": 8,
+    "head_hidden_dim": 64,
+    "max_name_components": 16,
+    "name_hidden_dim": 48,
+    "popularity_prior_weight": 1.0,
+    "recency_prior_weight": 0.0,
+    "residual_scale": 0.05,
+    "vocab_size": 4096
+  },
+  "model_config_by_topology": {
+    "ring": {
+      "context_hidden_dim": 64,
+      "context_layers": 1,
+      "dropout": 0.0,
+      "embedding_dim": 32,
+      "feature_dim": 8,
+      "head_hidden_dim": 64,
+      "max_name_components": 16,
+      "name_hidden_dim": 48,
+      "popularity_prior_weight": 1.0,
+      "recency_prior_weight": 0.0,
+      "residual_scale": 0.05,
+      "vocab_size": 4096
+    }
+  },
+  "network": {
+    "placement": "leave-copy-everywhere",
+    "producer_node": "node-0",
+    "producer_prefix": "/dataset/item",
+    "routers": 8,
+    "routing": "component-prefix shortest-path FIB",
+    "star_center": "auto"
+  },
+  "online_auxiliary_future_reuse_labels": false,
+  "online_training_config": {
+    "allow_bypass": false,
+    "auxiliary_coefficient": 0.0,
+    "baseline_momentum": 0.95,
+    "calibration_samples": 0,
+    "entropy_coefficient": 0.0,
+    "gamma": 0.97,
+    "gradient_clip": 1.0,
+    "learning_rate": 0.0001,
+    "popularity_decay": 32.0,
+    "prediction_horizon": 32,
+    "recency_scale": 100.0,
+    "replacement_shortlist_size": 8,
+    "rollout_length": 256,
+    "temperature": 0.3
+  },
+  "package_version": "0.10.0",
+  "pretraining_behavior_policy": "lru",
+  "pretraining_config": {
+    "allow_bypass": false,
+    "auxiliary_coefficient": 0.25,
+    "baseline_momentum": 0.95,
+    "calibration_samples": 16,
+    "entropy_coefficient": 0.0,
+    "gamma": 0.97,
+    "gradient_clip": 1.0,
+    "learning_rate": 0.0001,
+    "popularity_decay": 32.0,
+    "prediction_horizon": 32,
+    "recency_scale": 100.0,
+    "replacement_shortlist_size": 8,
+    "rollout_length": 256,
+    "temperature": 0.3
+  },
+  "topologies": {
+    "ring": {
+      "baselines": {
+        "fifo": {
+          "controller_efficiency": {},
+          "network_metrics": {
+            "byte_cache_hit_ratio": 0.688,
+            "cache_hit_bytes": 1720,
+            "cache_hit_ratio": 0.688,
+            "cache_hit_requests": 1720,
+            "consumer_requests": 2500,
+            "data_hops": 1839,
+            "hop_savings_ratio": 0.6498476770753998,
+            "interest_hops": 1839,
+            "mean_retrieval_hops": 0.7356,
+            "producer_fetches": 780,
+            "producer_path_hops": 5252,
+            "requested_bytes": 2500,
+            "router_cache_hit_ratio": 0.3964047015441346,
+            "router_cache_hits": 1720,
+            "router_cache_misses": 2619,
+            "router_lookups": 4339,
+            "satisfied_requests": 2500,
+            "unsatisfied_requests": 0
+          },
+          "per_node": {
+            "node-0": {
+              "cache": {
+                "byte_hit_ratio": 0.07582938388625593,
+                "bytes_hit": 64,
+                "bytes_requested": 844,
+                "evicted_bytes": 764,
+                "eviction_rate": 0.9052132701421801,
+                "evictions": 764,
+                "expirations": 0,
+                "expired_bytes": 0,
+                "hit_ratio": 0.07582938388625593,
+                "hits": 64,
+                "insertions": 780,
+                "miss_ratio": 0.9241706161137441,
+                "misses": 780,
+                "rejected_bytes": 0,
+                "rejection_rate": 0.0,
+                "rejections": 0,
+                "requests": 844
+              },
+              "final_cache": [
+                "/dataset/item/category-00/000048",
+                "/dataset/item/category-00/000064",
+                "/dataset/item/category-00/000288",
+                "/dataset/item/category-01/000033",
+                "/dataset/item/category-01/000289",
+                "/dataset/item/category-03/000043",
+                "/dataset/item/category-03/000075",
+                "/dataset/item/category-03/000187",
+                "/dataset/item/category-03/000291",
+                "/dataset/item/category-05/000181",
+                "/dataset/item/category-05/000285",
+                "/dataset/item/category-06/000254",
+                "/dataset/item/category-06/000286",
+                "/dataset/item/category-07/000063",
+                "/dataset/item/category-07/000287",
+                "/dataset/item/category-07/000295"
+              ],
+              "forwarding": {
+                "data_forwarded": 844,
+                "data_received": 0,
+                "interests_forwarded": 0,
+                "interests_received": 844,
+                "producer_responses": 780
+              }
+            },
+            "node-1": {
+              "cache": {
+                "byte_hit_ratio": 0.45869947275922673,
+                "bytes_hit": 522,
+                "bytes_requested": 1138,
+                "evicted_bytes": 600,
+                "eviction_rate": 0.5272407732864675,
+                "evictions": 600,
+                "expirations": 0,
+                "expired_bytes": 0,
+                "hit_ratio": 0.45869947275922673,
+                "hits": 522,
+                "insertions": 616,
+                "miss_ratio": 0.5413005272407733,
+                "misses": 616,
+                "rejected_bytes": 0,
+                "rejection_rate": 0.0,
+                "rejections": 0,
+                "requests": 1138
+              },
+              "final_cache": [
+                "/dataset/item/category-00/000048",
+                "/dataset/item/category-00/000064",
+                "/dataset/item/category-00/000072",
+                "/dataset/item/category-00/000288",
+                "/dataset/item/category-01/000033",
+                "/dataset/item/category-01/000289",
+                "/dataset/item/category-03/000043",
+                "/dataset/item/category-03/000075",
+                "/dataset/item/category-03/000187",
+                "/dataset/item/category-03/000291",
+                "/dataset/item/category-05/000181",
+                "/dataset/item/category-05/000285",
+                "/dataset/item/category-06/000286",
+                "/dataset/item/category-07/000063",
+                "/dataset/item/category-07/000287",
+                "/dataset/item/category-07/000295"
+              ],
+              "forwarding": {
+                "data_forwarded": 379,
+                "data_received": 616,
+                "interests_forwarded": 616,
+                "interests_received": 1138,
+                "producer_responses": 0
+              }
+            },
+            "node-2": {
+              "cache": {
+                "byte_hit_ratio": 0.4426470588235294,
+                "bytes_hit": 301,
+                "bytes_requested": 680,
+                "evicted_bytes": 363,
+                "eviction_rate": 0.5338235294117647,
+                "evictions": 363,
+                "expirations": 0,
+                "expired_bytes": 0,
+                "hit_ratio": 0.4426470588235294,
+                "hits": 301,
+                "insertions": 379,
+                "miss_ratio": 0.5573529411764706,
+                "misses": 379,
+                "rejected_bytes": 0,
+                "rejection_rate": 0.0,
+                "rejections": 0,
+                "requests": 680
+              },
+              "final_cache": [
+                "/dataset/item/category-00/000008",
+                "/dataset/item/category-00/000264",
+                "/dataset/item/category-00/000288",
+                "/dataset/item/category-00/000296",
+                "/dataset/item/category-01/000033",
+                "/dataset/item/category-02/000290",
+                "/dataset/item/category-03/000003",
+                "/dataset/item/category-03/000043",
+                "/dataset/item/category-03/000075",
+                "/dataset/item/category-03/000187",
+                "/dataset/item/category-03/000291",
+                "/dataset/item/category-05/000261",
+                "/dataset/item/category-05/000285",
+                "/dataset/item/category-06/000014",
+                "/dataset/item/category-07/000063",
+                "/dataset/item/category-07/000295"
+              ],
+              "forwarding": {
+                "data_forwarded": 235,
+                "data_received": 379,
+                "interests_forwarded": 379,
+                "interests_received": 680,
+                "producer_responses": 0
+              }
+            },
+            "node-3": {
+              "cache": {
+                "byte_hit_ratio": 0.49023861171366595,
+                "bytes_hit": 226,
+                "bytes_requested": 461,
+                "evicted_bytes": 218,
+                "eviction_rate": 0.47288503253796094,
+                "evictions": 218,
+                "expirations": 1,
+                "expired_bytes": 1,
+                "hit_ratio": 0.49023861171366595,
+                "hits": 226,
+                "insertions": 235,
+                "miss_ratio": 0.5097613882863341,
+                "misses": 235,
+                "rejected_bytes": 0,
+                "rejection_rate": 0.0,
+                "rejections": 0,
+                "requests": 461
+              },
+              "final_cache": [
+                "/dataset/item/category-00/000288",
+                "/dataset/item/category-02/000050",
+                "/dataset/item/category-03/000003",
+                "/dataset/item/category-03/000043",
+                "/dataset/item/category-03/000075",
+                "/dataset/item/category-03/000187",
+                "/dataset/item/category-05/000021",
+                "/dataset/item/category-05/000261",
+                "/dataset/item/category-05/000285",
+                "/dataset/item/category-06/000014",
+                "/dataset/item/category-06/000286",
+                "/dataset/item/category-07/000063",
+                "/dataset/item/category-07/000071",
+                "/dataset/item/category-07/000143",
+                "/dataset/item/category-07/000287",
+                "/dataset/item/category-07/000295"
+              ],
+              "forwarding": {
+                "data_forwarded": 107,
+                "data_received": 235,
+                "interests_forwarded": 235,
+                "interests_received": 461,
+                "producer_responses": 0
+              }
+            },
+            "node-4": {
+              "cache": {
+                "byte_hit_ratio": 0.6397306397306397,
+                "bytes_hit": 190,
+                "bytes_requested": 297,
+                "evicted_bytes": 90,
+                "eviction_rate": 0.30303030303030304,
+                "evictions": 90,
+                "expirations": 1,
+                "expired_bytes": 1,
+                "hit_ratio": 0.6397306397306397,
+                "hits": 190,
+                "insertions": 107,
+                "miss_ratio": 0.3602693602693603,
+                "misses": 107,
+                "rejected_bytes": 0,
+                "rejection_rate": 0.0,
+                "rejections": 0,
+                "requests": 297
+              },
+              "final_cache": [
+                "/dataset/item/category-00/000000",
+                "/dataset/item/category-00/000144",
+                "/dataset/item/category-01/000289",
+                "/dataset/item/category-02/000066",
+                "/dataset/item/category-02/000290",
+                "/dataset/item/category-05/000021",
+                "/dataset/item/category-05/000037",
+                "/dataset/item/category-05/000285",
+                "/dataset/item/category-06/000022",
+                "/dataset/item/category-06/000190",
+                "/dataset/item/category-06/000286",
+                "/dataset/item/category-07/000007",
+                "/dataset/item/category-07/000063",
+                "/dataset/item/category-07/000071",
+                "/dataset/item/category-07/000287",
+                "/dataset/item/category-07/000295"
+              ],
+              "forwarding": {
+                "data_forwarded": 0,
+                "data_received": 107,
+                "interests_forwarded": 107,
+                "interests_received": 297,
+                "producer_responses": 0
+              }
+            },
+            "node-5": {
+              "cache": {
+                "byte_hit_ratio": 0.5815899581589958,
+                "bytes_hit": 139,
+                "bytes_requested": 239,
+                "evicted_bytes": 84,
+                "eviction_rate": 0.3514644351464435,
+                "evictions": 84,
+                "expirations": 0,
+                "expired_bytes": 0,
+                "hit_ratio": 0.5815899581589958,
+                "hits": 139,
+                "insertions": 100,
+                "miss_ratio": 0.41841004184100417,
+                "misses": 100,
+                "rejected_bytes": 0,
+                "rejection_rate": 0.0,
+                "rejections": 0,
+                "requests": 239
+              },
+              "final_cache": [
+                "/dataset/item/category-00/000056",
+                "/dataset/item/category-00/000080",
+                "/dataset/item/category-00/000296",
+                "/dataset/item/category-01/000001",
+                "/dataset/item/category-01/000289",
+                "/dataset/item/category-02/000018",
+                "/dataset/item/category-02/000138",
+                "/dataset/item/category-02/000194",
+                "/dataset/item/category-03/000035",
+                "/dataset/item/category-03/000291",
+                "/dataset/item/category-04/000140",
+                "/dataset/item/category-05/000285",
+                "/dataset/item/category-06/000014",
+                "/dataset/item/category-07/000159",
+                "/dataset/item/category-07/000287",
+                "/dataset/item/category-07/000295"
+              ],
+              "forwarding": {
+                "data_forwarded": 0,
+                "data_received": 100,
+                "interests_forwarded": 100,
+                "interests_received": 239,
+                "producer_responses": 0
+              }
+            },
+            "node-6": {
+              "cache": {
+                "byte_hit_ratio": 0.4727272727272727,
+                "bytes_hit": 156,
+                "bytes_requested": 330,
+                "evicted_bytes": 158,
+                "eviction_rate": 0.47878787878787876,
+                "evictions": 158,
+                "expirations": 0,
+                "expired_bytes": 0,
+                "hit_ratio": 0.4727272727272727,
+                "hits": 156,
+                "insertions": 174,
+                "miss_ratio": 0.5272727272727272,
+                "misses": 174,
+                "rejected_bytes": 0,
+                "rejection_rate": 0.0,
+                "rejections": 0,
+                "requests": 330
+              },
+              "final_cache": [
+                "/dataset/item/category-00/000000",
+                "/dataset/item/category-00/000056",
+                "/dataset/item/category-00/000288",
+                "/dataset/item/category-00/000296",
+                "/dataset/item/category-01/000153",
+                "/dataset/item/category-01/000289",
+                "/dataset/item/category-02/000018",
+                "/dataset/item/category-02/000194",
+                "/dataset/item/category-02/000290",
+                "/dataset/item/category-03/000171",
+                "/dataset/item/category-04/000292",
+                "/dataset/item/category-05/000013",
+                "/dataset/item/category-05/000285",
+                "/dataset/item/category-06/000014",
+                "/dataset/item/category-06/000062",
+                "/dataset/item/category-06/000254"
+              ],
+              "forwarding": {
+                "data_forwarded": 100,
+                "data_received": 174,
+                "interests_forwarded": 174,
+                "interests_received": 330,
+                "producer_responses": 0
+              }
+            },
+            "node-7": {
+              "cache": {
+                "byte_hit_ratio": 0.3485714285714286,
+                "bytes_hit": 122,
+                "bytes_requested": 350,
+                "evicted_bytes": 212,
+                "eviction_rate": 0.6057142857142858,
+                "evictions": 212,
+                "expirations": 0,
+                "expired_bytes": 0,
+                "hit_ratio": 0.3485714285714286,
+                "hits": 122,
+                "insertions": 228,
+                "miss_ratio": 0.6514285714285715,
+                "misses": 228,
+                "rejected_bytes": 0,
+                "rejection_rate": 0.0,
+                "rejections": 0,
+                "requests": 350
+              },
+              "final_cache": [
+                "/dataset/item/category-00/000000",
+                "/dataset/item/category-00/000056",
+                "/dataset/item/category-00/000288",
+                "/dataset/item/category-00/000296",
+                "/dataset/item/category-01/000153",
+                "/dataset/item/category-01/000289",
+                "/dataset/item/category-02/000018",
+                "/dataset/item/category-02/000194",
+                "/dataset/item/category-02/000290",
+                "/dataset/item/category-03/000019",
+                "/dataset/item/category-04/000028",
+                "/dataset/item/category-04/000292",
+                "/dataset/item/category-05/000013",
+                "/dataset/item/category-05/000221",
+                "/dataset/item/category-05/000285",
+                "/dataset/item/category-06/000254"
+              ],
+              "forwarding": {
+                "data_forwarded": 174,
+                "data_received": 228,
+                "interests_forwarded": 228,
+                "interests_received": 350,
+                "producer_responses": 0
+              }
+            }
+          },
+          "topology": {
+            "adjacency": {
+              "node-0": [
+                "node-1",
+                "node-7"
+              ],
+              "node-1": [
+                "node-0",
+                "node-2"
+              ],
+              "node-2": [
+                "node-1",
+                "node-3"
+              ],
+              "node-3": [
+                "node-2",
+                "node-4"
+              ],
+              "node-4": [
+                "node-3",
+                "node-5"
+              ],
+              "node-5": [
+                "node-4",
+                "node-6"
+              ],
+              "node-6": [
+                "node-5",
+                "node-7"
+              ],
+              "node-7": [
+                "node-0",
+                "node-6"
+              ]
+            },
+            "edges": [
+              [
+                "node-0",
+                "node-1"
+              ],
+              [
+                "node-0",
+                "node-7"
+              ],
+              [
+                "node-1",
+                "node-2"
+              ],
+              [
+                "node-2",
+                "node-3"
+              ],
+              [
+                "node-3",
+                "node-4"
+              ],
+              [
+                "node-4",
+                "node-5"
+              ],
+              [
+                "node-5",
+                "node-6"
+              ],
+              [
+                "node-6",
+                "node-7"
+              ]
+            ],
+            "fib": {
+              "node-0": {},
+              "node-1": {
+                "/dataset/item": "node-0"
+              },
+              "node-2": {
+                "/dataset/item": "node-1"
+              },
+              "node-3": {
+                "/dataset/item": "node-2"
+              },
+              "node-4": {
+                "/dataset/item": "node-3"
+              },
+              "node-5": {
+                "/dataset/item": "node-6"
+              },
+              "node-6": {
+                "/dataset/item": "node-7"
+              },
+              "node-7": {
+                "/dataset/item": "node-0"
+              }
+            },
+            "kind": "ring",
+            "nodes": [
+              "node-0",
+              "node-1",
+              "node-2",
+              "node-3",
+              "node-4",
+              "node-5",
+              "node-6",
+              "node-7"
+            ],
+            "producers": {
+              "/dataset/item": "node-0"
+            }
+          },
+          "updates": []
+        },
+        "lfu": {
+          "controller_efficiency": {},
+          "network_metrics": {
+            "byte_cache_hit_ratio": 0.5808,
+            "cache_hit_bytes": 1452,
+            "cache_hit_ratio": 0.5808,
+            "cache_hit_requests": 1452,
+            "consumer_requests": 2500,
+            "data_hops": 2532,
+            "hop_savings_ratio": 0.5178979436405179,
+            "interest_hops": 2532,
+            "mean_retrieval_hops": 1.0128,
+            "producer_fetches": 1048,
+            "producer_path_hops": 5252,
+            "requested_bytes": 2500,
+            "router_cache_hit_ratio": 0.28855325914149443,
+            "router_cache_hits": 1452,
+            "router_cache_misses": 3580,
+            "router_lookups": 5032,
+            "satisfied_requests": 2500,
+            "unsatisfied_requests": 0
+          },
+          "per_node": {
+            "node-0": {
+              "cache": {
+                "byte_hit_ratio": 0.13316790736145576,
+                "bytes_hit": 161,
+                "bytes_requested": 1209,
+                "evicted_bytes": 1029,
+                "eviction_rate": 0.8511166253101737,
+                "evictions": 1029,
+                "expirations": 3,
+                "expired_bytes": 3,
+                "hit_ratio": 0.13316790736145576,
+                "hits": 161,
+                "insertions": 1048,
+                "miss_ratio": 0.8668320926385442,
+                "misses": 1048,
+                "rejected_bytes": 0,
+                "rejection_rate": 0.0,
+                "rejections": 0,
+                "requests": 1209
+              },
+              "final_cache": [
+                "/dataset/item/category-00/000048",
+                "/dataset/item/category-00/000064",
+                "/dataset/item/category-00/000288",
+                "/dataset/item/category-01/000057",
+                "/dataset/item/category-02/000266",
+                "/dataset/item/category-02/000274",
+                "/dataset/item/category-03/000019",
+                "/dataset/item/category-05/000181",
+                "/dataset/item/category-05/000261",
+                "/dataset/item/category-05/000269",
+                "/dataset/item/category-05/000277",
+                "/dataset/item/category-05/000285",
+                "/dataset/item/category-06/000006",
+                "/dataset/item/category-06/000270",
+                "/dataset/item/category-06/000294",
+                "/dataset/item/category-07/000287"
+              ],
+              "forwarding": {
+                "data_forwarded": 1209,
+                "data_received": 0,
+                "interests_forwarded": 0,
+                "interests_received": 1209,
+                "producer_responses": 1048
+              }
+            },
+            "node-1": {
+              "cache": {
+                "byte_hit_ratio": 0.24900872323552736,
+                "bytes_hit": 314,
+                "bytes_requested": 1261,
+                "evicted_bytes": 930,
+                "eviction_rate": 0.7375099127676448,
+                "evictions": 930,
+                "expirations": 1,
+                "expired_bytes": 1,
+                "hit_ratio": 0.24900872323552736,
+                "hits": 314,
+                "insertions": 947,
+                "miss_ratio": 0.7509912767644726,
+                "misses": 947,
+                "rejected_bytes": 0,
+                "rejection_rate": 0.0,
+                "rejections": 0,
+                "requests": 1261
+              },
+              "final_cache": [
+                "/dataset/item/category-00/000256",
+                "/dataset/item/category-01/000025",
+                "/dataset/item/category-01/000257",
+                "/dataset/item/category-01/000273",
+                "/dataset/item/category-02/000258",
+                "/dataset/item/category-02/000274",
+                "/dataset/item/category-03/000203",
+                "/dataset/item/category-03/000259",
+                "/dataset/item/category-04/000260",
+                "/dataset/item/category-05/000269",
+                "/dataset/item/category-05/000285",
+                "/dataset/item/category-06/000014",
+                "/dataset/item/category-06/000270",
+                "/dataset/item/category-07/000255",
+                "/dataset/item/category-07/000271",
+                "/dataset/item/category-07/000287"
+              ],
+              "forwarding": {
+                "data_forwarded": 502,
+                "data_received": 947,
+                "interests_forwarded": 947,
+                "interests_received": 1261,
+                "producer_responses": 0
+              }
+            },
+            "node-2": {
+              "cache": {
+                "byte_hit_ratio": 0.355584082156611,
+                "bytes_hit": 277,
+                "bytes_requested": 779,
+                "evicted_bytes": 485,
+                "eviction_rate": 0.6225930680359435,
+                "evictions": 485,
+                "expirations": 1,
+                "expired_bytes": 1,
+                "hit_ratio": 0.355584082156611,
+                "hits": 277,
+                "insertions": 502,
+                "miss_ratio": 0.6444159178433889,
+                "misses": 502,
+                "rejected_bytes": 0,
+                "rejection_rate": 0.0,
+                "rejections": 0,
+                "requests": 779
+              },
+              "final_cache": [
+                "/dataset/item/category-00/000256",
+                "/dataset/item/category-00/000272",
+                "/dataset/item/category-00/000296",
+                "/dataset/item/category-01/000257",
+                "/dataset/item/category-02/000258",
+                "/dataset/item/category-02/000290",
+                "/dataset/item/category-03/000187",
+                "/dataset/item/category-03/000259",
+                "/dataset/item/category-05/000261",
+                "/dataset/item/category-05/000277",
+                "/dataset/item/category-05/000285",
+                "/dataset/item/category-06/000166",
+                "/dataset/item/category-06/000270",
+                "/dataset/item/category-06/000286",
+                "/dataset/item/category-07/000255",
+                "/dataset/item/category-07/000271"
+              ],
+              "forwarding": {
+                "data_forwarded": 334,
+                "data_received": 502,
+                "interests_forwarded": 502,
+                "interests_received": 779,
+                "producer_responses": 0
+              }
+            },
+            "node-3": {
+              "cache": {
+                "byte_hit_ratio": 0.34765625,
+                "bytes_hit": 178,
+                "bytes_requested": 512,
+                "evicted_bytes": 314,
+                "eviction_rate": 0.61328125,
+                "evictions": 314,
+                "expirations": 4,
+                "expired_bytes": 4,
+                "hit_ratio": 0.34765625,
+                "hits": 178,
+                "insertions": 334,
+                "miss_ratio": 0.65234375,
+                "misses": 334,
+                "rejected_bytes": 0,
+                "rejection_rate": 0.0,
+                "rejections": 0,
+                "requests": 512
+              },
+              "final_cache": [
+                "/dataset/item/category-00/000256",
+                "/dataset/item/category-00/000272",
+                "/dataset/item/category-01/000153",
+                "/dataset/item/category-01/000273",
+                "/dataset/item/category-01/000289",
+                "/dataset/item/category-02/000258",
+                "/dataset/item/category-03/000163",
+                "/dataset/item/category-03/000187",
+                "/dataset/item/category-04/000260",
+                "/dataset/item/category-04/000276",
+                "/dataset/item/category-05/000261",
+                "/dataset/item/category-05/000285",
+                "/dataset/item/category-06/000038",
+                "/dataset/item/category-06/000270",
+                "/dataset/item/category-07/000255",
+                "/dataset/item/category-07/000271"
+              ],
+              "forwarding": {
+                "data_forwarded": 158,
+                "data_received": 334,
+                "interests_forwarded": 334,
+                "interests_received": 512,
+                "producer_responses": 0
+              }
+            },
+            "node-4": {
+              "cache": {
+                "byte_hit_ratio": 0.468013468013468,
+                "bytes_hit": 139,
+                "bytes_requested": 297,
+                "evicted_bytes": 142,
+                "eviction_rate": 0.4781144781144781,
+                "evictions": 142,
+                "expirations": 0,
+                "expired_bytes": 0,
+                "hit_ratio": 0.468013468013468,
+                "hits": 139,
+                "insertions": 158,
+                "miss_ratio": 0.531986531986532,
+                "misses": 158,
+                "rejected_bytes": 0,
+                "rejection_rate": 0.0,
+                "rejections": 0,
+                "requests": 297
+              },
+              "final_cache": [
+                "/dataset/item/category-00/000256",
+                "/dataset/item/category-00/000272",
+                "/dataset/item/category-01/000257",
+                "/dataset/item/category-01/000289",
+                "/dataset/item/category-02/000258",
+                "/dataset/item/category-03/000259",
+                "/dataset/item/category-04/000020",
+                "/dataset/item/category-04/000204",
+                "/dataset/item/category-05/000261",
+                "/dataset/item/category-05/000285",
+                "/dataset/item/category-06/000094",
+                "/dataset/item/category-06/000270",
+                "/dataset/item/category-06/000286",
+                "/dataset/item/category-07/000031",
+                "/dataset/item/category-07/000255",
+                "/dataset/item/category-07/000271"
+              ],
+              "forwarding": {
+                "data_forwarded": 0,
+                "data_received": 158,
+                "interests_forwarded": 158,
+                "interests_received": 297,
+                "producer_responses": 0
+              }
+            },
+            "node-5": {
+              "cache": {
+                "byte_hit_ratio": 0.497907949790795,
+                "bytes_hit": 119,
+                "bytes_requested": 239,
+                "evicted_bytes": 101,
+                "eviction_rate": 0.4225941422594142,
+                "evictions": 101,
+                "expirations": 3,
+                "expired_bytes": 3,
+                "hit_ratio": 0.497907949790795,
+                "hits": 119,
+                "insertions": 120,
+                "miss_ratio": 0.502092050209205,
+                "misses": 120,
+                "rejected_bytes": 0,
+                "rejection_rate": 0.0,
+                "rejections": 0,
+                "requests": 239
+              },
+              "final_cache": [
+                "/dataset/item/category-00/000272",
+                "/dataset/item/category-00/000288",
+                "/dataset/item/category-00/000296",
+                "/dataset/item/category-01/000001",
+                "/dataset/item/category-01/000289",
+                "/dataset/item/category-02/000266",
+                "/dataset/item/category-02/000282",
+                "/dataset/item/category-03/000019",
+                "/dataset/item/category-03/000259",
+                "/dataset/item/category-04/000004",
+                "/dataset/item/category-05/000285",
+                "/dataset/item/category-06/000270",
+                "/dataset/item/category-07/000255",
+                "/dataset/item/category-07/000271",
+                "/dataset/item/category-07/000287",
+                "/dataset/item/category-07/000295"
+              ],
+              "forwarding": {
+                "data_forwarded": 0,
+                "data_received": 120,
+                "interests_forwarded": 120,
+                "interests_received": 239,
+                "producer_responses": 0
+              }
+            },
+            "node-6": {
+              "cache": {
+                "byte_hit_ratio": 0.40285714285714286,
+                "bytes_hit": 141,
+                "bytes_requested": 350,
+                "evicted_bytes": 193,
+                "eviction_rate": 0.5514285714285714,
+                "evictions": 193,
+                "expirations": 0,
+                "expired_bytes": 0,
+                "hit_ratio": 0.40285714285714286,
+                "hits": 141,
+                "insertions": 209,
+                "miss_ratio": 0.5971428571428572,
+                "misses": 209,
+                "rejected_bytes": 0,
+                "rejection_rate": 0.0,
+                "rejections": 0,
+                "requests": 350
+              },
+              "final_cache": [
+                "/dataset/item/category-00/000256",
+                "/dataset/item/category-00/000272",
+                "/dataset/item/category-01/000273",
+                "/dataset/item/category-01/000289",
+                "/dataset/item/category-02/000258",
+                "/dataset/item/category-02/000274",
+                "/dataset/item/category-05/000053",
+                "/dataset/item/category-05/000069",
+                "/dataset/item/category-05/000269",
+                "/dataset/item/category-05/000285",
+                "/dataset/item/category-06/000254",
+                "/dataset/item/category-06/000262",
+                "/dataset/item/category-06/000270",
+                "/dataset/item/category-06/000294",
+                "/dataset/item/category-07/000255",
+                "/dataset/item/category-07/000287"
+              ],
+              "forwarding": {
+                "data_forwarded": 120,
+                "data_received": 209,
+                "interests_forwarded": 209,
+                "interests_received": 350,
+                "producer_responses": 0
+              }
+            },
+            "node-7": {
+              "cache": {
+                "byte_hit_ratio": 0.3194805194805195,
+                "bytes_hit": 123,
+                "bytes_requested": 385,
+                "evicted_bytes": 244,
+                "eviction_rate": 0.6337662337662338,
+                "evictions": 244,
+                "expirations": 2,
+                "expired_bytes": 2,
+                "hit_ratio": 0.3194805194805195,
+                "hits": 123,
+                "insertions": 262,
+                "miss_ratio": 0.6805194805194805,
+                "misses": 262,
+                "rejected_bytes": 0,
+                "rejection_rate": 0.0,
+                "rejections": 0,
+                "requests": 385
+              },
+              "final_cache": [
+                "/dataset/item/category-00/000272",
+                "/dataset/item/category-02/000114",
+                "/dataset/item/category-02/000226",
+                "/dataset/item/category-02/000258",
+                "/dataset/item/category-02/000274",
+                "/dataset/item/category-03/000291",
+                "/dataset/item/category-04/000012",
+                "/dataset/item/category-05/000189",
+                "/dataset/item/category-05/000285",
+                "/dataset/item/category-06/000110",
+                "/dataset/item/category-06/000254",
+                "/dataset/item/category-06/000270",
+                "/dataset/item/category-06/000294",
+                "/dataset/item/category-07/000015",
+                "/dataset/item/category-07/000255",
+                "/dataset/item/category-07/000271"
+              ],
+              "forwarding": {
+                "data_forwarded": 209,
+                "data_received": 262,
+                "interests_forwarded": 262,
+                "interests_received": 385,
+                "producer_responses": 0
+              }
+            }
+          },
+          "topology": {
+            "adjacency": {
+              "node-0": [
+                "node-1",
+                "node-7"
+              ],
+              "node-1": [
+                "node-0",
+                "node-2"
+              ],
+              "node-2": [
+                "node-1",
+                "node-3"
+              ],
+              "node-3": [
+                "node-2",
+                "node-4"
+              ],
+              "node-4": [
+                "node-3",
+                "node-5"
+              ],
+              "node-5": [
+                "node-4",
+                "node-6"
+              ],
+              "node-6": [
+                "node-5",
+                "node-7"
+              ],
+              "node-7": [
+                "node-0",
+                "node-6"
+              ]
+            },
+            "edges": [
+              [
+                "node-0",
+                "node-1"
+              ],
+              [
+                "node-0",
+                "node-7"
+              ],
+              [
+                "node-1",
+                "node-2"
+              ],
+              [
+                "node-2",
+                "node-3"
+              ],
+              [
+                "node-3",
+                "node-4"
+              ],
+              [
+                "node-4",
+                "node-5"
+              ],
+              [
+                "node-5",
+                "node-6"
+              ],
+              [
+                "node-6",
+                "node-7"
+              ]
+            ],
+            "fib": {
+              "node-0": {},
+              "node-1": {
+                "/dataset/item": "node-0"
+              },
+              "node-2": {
+                "/dataset/item": "node-1"
+              },
+              "node-3": {
+                "/dataset/item": "node-2"
+              },
+              "node-4": {
+                "/dataset/item": "node-3"
+              },
+              "node-5": {
+                "/dataset/item": "node-6"
+              },
+              "node-6": {
+                "/dataset/item": "node-7"
+              },
+              "node-7": {
+                "/dataset/item": "node-0"
+              }
+            },
+            "kind": "ring",
+            "nodes": [
+              "node-0",
+              "node-1",
+              "node-2",
+              "node-3",
+              "node-4",
+              "node-5",
+              "node-6",
+              "node-7"
+            ],
+            "producers": {
+              "/dataset/item": "node-0"
+            }
+          },
+          "updates": []
+        },
+        "lru": {
+          "controller_efficiency": {},
+          "network_metrics": {
+            "byte_cache_hit_ratio": 0.7204,
+            "cache_hit_bytes": 1801,
+            "cache_hit_ratio": 0.7204,
+            "cache_hit_requests": 1801,
+            "consumer_requests": 2500,
+            "data_hops": 1635,
+            "hop_savings_ratio": 0.6886900228484387,
+            "interest_hops": 1635,
+            "mean_retrieval_hops": 0.654,
+            "producer_fetches": 699,
+            "producer_path_hops": 5252,
+            "requested_bytes": 2500,
+            "router_cache_hit_ratio": 0.4355501813784764,
+            "router_cache_hits": 1801,
+            "router_cache_misses": 2334,
+            "router_lookups": 4135,
+            "satisfied_requests": 2500,
+            "unsatisfied_requests": 0
+          },
+          "per_node": {
+            "node-0": {
+              "cache": {
+                "byte_hit_ratio": 0.0642570281124498,
+                "bytes_hit": 48,
+                "bytes_requested": 747,
+                "evicted_bytes": 683,
+                "eviction_rate": 0.9143239625167336,
+                "evictions": 683,
+                "expirations": 0,
+                "expired_bytes": 0,
+                "hit_ratio": 0.0642570281124498,
+                "hits": 48,
+                "insertions": 699,
+                "miss_ratio": 0.9357429718875502,
+                "misses": 699,
+                "rejected_bytes": 0,
+                "rejection_rate": 0.0,
+                "rejections": 0,
+                "requests": 747
+              },
+              "final_cache": [
+                "/dataset/item/category-00/000048",
+                "/dataset/item/category-00/000064",
+                "/dataset/item/category-00/000288",
+                "/dataset/item/category-01/000289",
+                "/dataset/item/category-02/000290",
+                "/dataset/item/category-03/000043",
+                "/dataset/item/category-03/000075",
+                "/dataset/item/category-03/000187",
+                "/dataset/item/category-03/000291",
+                "/dataset/item/category-05/000181",
+                "/dataset/item/category-06/000254",
+                "/dataset/item/category-06/000286",
+                "/dataset/item/category-07/000007",
+                "/dataset/item/category-07/000063",
+                "/dataset/item/category-07/000287",
+                "/dataset/item/category-07/000295"
+              ],
+              "forwarding": {
+                "data_forwarded": 747,
+                "data_received": 0,
+                "interests_forwarded": 0,
+                "interests_received": 747,
+                "producer_responses": 699
+              }
+            },
+            "node-1": {
+              "cache": {
+                "byte_hit_ratio": 0.5018214936247724,
+                "bytes_hit": 551,
+                "bytes_requested": 1098,
+                "evicted_bytes": 531,
+                "eviction_rate": 0.48360655737704916,
+                "evictions": 531,
+                "expirations": 0,
+                "expired_bytes": 0,
+                "hit_ratio": 0.5018214936247724,
+                "hits": 551,
+                "insertions": 547,
+                "miss_ratio": 0.4981785063752277,
+                "misses": 547,
+                "rejected_bytes": 0,
+                "rejection_rate": 0.0,
+                "rejections": 0,
+                "requests": 1098
+              },
+              "final_cache": [
+                "/dataset/item/category-00/000048",
+                "/dataset/item/category-00/000064",
+                "/dataset/item/category-00/000288",
+                "/dataset/item/category-01/000289",
+                "/dataset/item/category-02/000290",
+                "/dataset/item/category-03/000043",
+                "/dataset/item/category-03/000075",
+                "/dataset/item/category-03/000187",
+                "/dataset/item/category-03/000291",
+                "/dataset/item/category-05/000181",
+                "/dataset/item/category-05/000285",
+                "/dataset/item/category-06/000286",
+                "/dataset/item/category-07/000063",
+                "/dataset/item/category-07/000151",
+                "/dataset/item/category-07/000287",
+                "/dataset/item/category-07/000295"
+              ],
+              "forwarding": {
+                "data_forwarded": 339,
+                "data_received": 547,
+                "interests_forwarded": 547,
+                "interests_received": 1098,
+                "producer_responses": 0
+              }
+            },
+            "node-2": {
+              "cache": {
+                "byte_hit_ratio": 0.48323170731707316,
+                "bytes_hit": 317,
+                "bytes_requested": 656,
+                "evicted_bytes": 323,
+                "eviction_rate": 0.4923780487804878,
+                "evictions": 323,
+                "expirations": 0,
+                "expired_bytes": 0,
+                "hit_ratio": 0.48323170731707316,
+                "hits": 317,
+                "insertions": 339,
+                "miss_ratio": 0.5167682926829268,
+                "misses": 339,
+                "rejected_bytes": 0,
+                "rejection_rate": 0.0,
+                "rejections": 0,
+                "requests": 656
+              },
+              "final_cache": [
+                "/dataset/item/category-00/000008",
+                "/dataset/item/category-00/000264",
+                "/dataset/item/category-00/000288",
+                "/dataset/item/category-00/000296",
+                "/dataset/item/category-01/000033",
+                "/dataset/item/category-02/000290",
+                "/dataset/item/category-03/000043",
+                "/dataset/item/category-03/000075",
+                "/dataset/item/category-03/000187",
+                "/dataset/item/category-03/000291",
+                "/dataset/item/category-03/000299",
+                "/dataset/item/category-05/000285",
+                "/dataset/item/category-06/000014",
+                "/dataset/item/category-07/000007",
+                "/dataset/item/category-07/000063",
+                "/dataset/item/category-07/000295"
+              ],
+              "forwarding": {
+                "data_forwarded": 211,
+                "data_received": 339,
+                "interests_forwarded": 339,
+                "interests_received": 656,
+                "producer_responses": 0
+              }
+            },
+            "node-3": {
+              "cache": {
+                "byte_hit_ratio": 0.5300668151447662,
+                "bytes_hit": 238,
+                "bytes_requested": 449,
+                "evicted_bytes": 195,
+                "eviction_rate": 0.43429844097995546,
+                "evictions": 195,
+                "expirations": 0,
+                "expired_bytes": 0,
+                "hit_ratio": 0.5300668151447662,
+                "hits": 238,
+                "insertions": 211,
+                "miss_ratio": 0.46993318485523383,
+                "misses": 211,
+                "rejected_bytes": 0,
+                "rejection_rate": 0.0,
+                "rejections": 0,
+                "requests": 449
+              },
+              "final_cache": [
+                "/dataset/item/category-00/000288",
+                "/dataset/item/category-02/000290",
+                "/dataset/item/category-03/000003",
+                "/dataset/item/category-03/000043",
+                "/dataset/item/category-03/000075",
+                "/dataset/item/category-03/000187",
+                "/dataset/item/category-05/000021",
+                "/dataset/item/category-05/000261",
+                "/dataset/item/category-05/000285",
+                "/dataset/item/category-06/000014",
+                "/dataset/item/category-06/000286",
+                "/dataset/item/category-07/000007",
+                "/dataset/item/category-07/000063",
+                "/dataset/item/category-07/000071",
+                "/dataset/item/category-07/000287",
+                "/dataset/item/category-07/000295"
+              ],
+              "forwarding": {
+                "data_forwarded": 95,
+                "data_received": 211,
+                "interests_forwarded": 211,
+                "interests_received": 449,
+                "producer_responses": 0
+              }
+            },
+            "node-4": {
+              "cache": {
+                "byte_hit_ratio": 0.6801346801346801,
+                "bytes_hit": 202,
+                "bytes_requested": 297,
+                "evicted_bytes": 78,
+                "eviction_rate": 0.26262626262626265,
+                "evictions": 78,
+                "expirations": 1,
+                "expired_bytes": 1,
+                "hit_ratio": 0.6801346801346801,
+                "hits": 202,
+                "insertions": 95,
+                "miss_ratio": 0.31986531986531985,
+                "misses": 95,
+                "rejected_bytes": 0,
+                "rejection_rate": 0.0,
+                "rejections": 0,
+                "requests": 297
+              },
+              "final_cache": [
+                "/dataset/item/category-00/000000",
+                "/dataset/item/category-00/000144",
+                "/dataset/item/category-01/000017",
+                "/dataset/item/category-01/000289",
+                "/dataset/item/category-02/000066",
+                "/dataset/item/category-02/000290",
+                "/dataset/item/category-05/000037",
+                "/dataset/item/category-05/000285",
+                "/dataset/item/category-06/000006",
+                "/dataset/item/category-06/000022",
+                "/dataset/item/category-06/000286",
+                "/dataset/item/category-07/000007",
+                "/dataset/item/category-07/000063",
+                "/dataset/item/category-07/000071",
+                "/dataset/item/category-07/000287",
+                "/dataset/item/category-07/000295"
+              ],
+              "forwarding": {
+                "data_forwarded": 0,
+                "data_received": 95,
+                "interests_forwarded": 95,
+                "interests_received": 297,
+                "producer_responses": 0
+              }
+            },
+            "node-5": {
+              "cache": {
+                "byte_hit_ratio": 0.6150627615062761,
+                "bytes_hit": 147,
+                "bytes_requested": 239,
+                "evicted_bytes": 75,
+                "eviction_rate": 0.3138075313807531,
+                "evictions": 75,
+                "expirations": 1,
+                "expired_bytes": 1,
+                "hit_ratio": 0.6150627615062761,
+                "hits": 147,
+                "insertions": 92,
+                "miss_ratio": 0.38493723849372385,
+                "misses": 92,
+                "rejected_bytes": 0,
+                "rejection_rate": 0.0,
+                "rejections": 0,
+                "requests": 239
+              },
+              "final_cache": [
+                "/dataset/item/category-00/000056",
+                "/dataset/item/category-00/000080",
+                "/dataset/item/category-00/000288",
+                "/dataset/item/category-00/000296",
+                "/dataset/item/category-01/000001",
+                "/dataset/item/category-01/000289",
+                "/dataset/item/category-02/000018",
+                "/dataset/item/category-02/000138",
+                "/dataset/item/category-02/000194",
+                "/dataset/item/category-03/000035",
+                "/dataset/item/category-03/000291",
+                "/dataset/item/category-04/000140",
+                "/dataset/item/category-05/000285",
+                "/dataset/item/category-06/000014",
+                "/dataset/item/category-07/000287",
+                "/dataset/item/category-07/000295"
+              ],
+              "forwarding": {
+                "data_forwarded": 0,
+                "data_received": 92,
+                "interests_forwarded": 92,
+                "interests_received": 239,
+                "producer_responses": 0
+              }
+            },
+            "node-6": {
+              "cache": {
+                "byte_hit_ratio": 0.531055900621118,
+                "bytes_hit": 171,
+                "bytes_requested": 322,
+                "evicted_bytes": 135,
+                "eviction_rate": 0.4192546583850932,
+                "evictions": 135,
+                "expirations": 0,
+                "expired_bytes": 0,
+                "hit_ratio": 0.531055900621118,
+                "hits": 171,
+                "insertions": 151,
+                "miss_ratio": 0.468944099378882,
+                "misses": 151,
+                "rejected_bytes": 0,
+                "rejection_rate": 0.0,
+                "rejections": 0,
+                "requests": 322
+              },
+              "final_cache": [
+                "/dataset/item/category-00/000000",
+                "/dataset/item/category-00/000056",
+                "/dataset/item/category-00/000288",
+                "/dataset/item/category-00/000296",
+                "/dataset/item/category-01/000009",
+                "/dataset/item/category-01/000153",
+                "/dataset/item/category-01/000289",
+                "/dataset/item/category-02/000018",
+                "/dataset/item/category-02/000194",
+                "/dataset/item/category-02/000290",
+                "/dataset/item/category-03/000171",
+                "/dataset/item/category-04/000292",
+                "/dataset/item/category-05/000013",
+                "/dataset/item/category-05/000285",
+                "/dataset/item/category-06/000254",
+                "/dataset/item/category-07/000287"
+              ],
+              "forwarding": {
+                "data_forwarded": 92,
+                "data_received": 151,
+                "interests_forwarded": 151,
+                "interests_received": 322,
+                "producer_responses": 0
+              }
+            },
+            "node-7": {
+              "cache": {
+                "byte_hit_ratio": 0.38837920489296635,
+                "bytes_hit": 127,
+                "bytes_requested": 327,
+                "evicted_bytes": 184,
+                "eviction_rate": 0.5626911314984709,
+                "evictions": 184,
+                "expirations": 0,
+                "expired_bytes": 0,
+                "hit_ratio": 0.38837920489296635,
+                "hits": 127,
+                "insertions": 200,
+                "miss_ratio": 0.6116207951070336,
+                "misses": 200,
+                "rejected_bytes": 0,
+                "rejection_rate": 0.0,
+                "rejections": 0,
+                "requests": 327
+              },
+              "final_cache": [
+                "/dataset/item/category-00/000000",
+                "/dataset/item/category-00/000056",
+                "/dataset/item/category-00/000288",
+                "/dataset/item/category-00/000296",
+                "/dataset/item/category-01/000153",
+                "/dataset/item/category-01/000289",
+                "/dataset/item/category-02/000018",
+                "/dataset/item/category-02/000194",
+                "/dataset/item/category-02/000290",
+                "/dataset/item/category-03/000019",
+                "/dataset/item/category-04/000028",
+                "/dataset/item/category-04/000292",
+                "/dataset/item/category-05/000013",
+                "/dataset/item/category-05/000221",
+                "/dataset/item/category-05/000285",
+                "/dataset/item/category-06/000254"
+              ],
+              "forwarding": {
+                "data_forwarded": 151,
+                "data_received": 200,
+                "interests_forwarded": 200,
+                "interests_received": 327,
+                "producer_responses": 0
+              }
+            }
+          },
+          "topology": {
+            "adjacency": {
+              "node-0": [
+                "node-1",
+                "node-7"
+              ],
+              "node-1": [
+                "node-0",
+                "node-2"
+              ],
+              "node-2": [
+                "node-1",
+                "node-3"
+              ],
+              "node-3": [
+                "node-2",
+                "node-4"
+              ],
+              "node-4": [
+                "node-3",
+                "node-5"
+              ],
+              "node-5": [
+                "node-4",
+                "node-6"
+              ],
+              "node-6": [
+                "node-5",
+                "node-7"
+              ],
+              "node-7": [
+                "node-0",
+                "node-6"
+              ]
+            },
+            "edges": [
+              [
+                "node-0",
+                "node-1"
+              ],
+              [
+                "node-0",
+                "node-7"
+              ],
+              [
+                "node-1",
+                "node-2"
+              ],
+              [
+                "node-2",
+                "node-3"
+              ],
+              [
+                "node-3",
+                "node-4"
+              ],
+              [
+                "node-4",
+                "node-5"
+              ],
+              [
+                "node-5",
+                "node-6"
+              ],
+              [
+                "node-6",
+                "node-7"
+              ]
+            ],
+            "fib": {
+              "node-0": {},
+              "node-1": {
+                "/dataset/item": "node-0"
+              },
+              "node-2": {
+                "/dataset/item": "node-1"
+              },
+              "node-3": {
+                "/dataset/item": "node-2"
+              },
+              "node-4": {
+                "/dataset/item": "node-3"
+              },
+              "node-5": {
+                "/dataset/item": "node-6"
+              },
+              "node-6": {
+                "/dataset/item": "node-7"
+              },
+              "node-7": {
+                "/dataset/item": "node-0"
+              }
+            },
+            "kind": "ring",
+            "nodes": [
+              "node-0",
+              "node-1",
+              "node-2",
+              "node-3",
+              "node-4",
+              "node-5",
+              "node-6",
+              "node-7"
+            ],
+            "producers": {
+              "/dataset/item": "node-0"
+            }
+          },
+          "updates": []
+        },
+        "random": {
+          "controller_efficiency": {},
+          "network_metrics": {
+            "byte_cache_hit_ratio": 0.7024,
+            "cache_hit_bytes": 1756,
+            "cache_hit_ratio": 0.7024,
+            "cache_hit_requests": 1756,
+            "consumer_requests": 2500,
+            "data_hops": 1922,
+            "hop_savings_ratio": 0.634044173648134,
+            "interest_hops": 1922,
+            "mean_retrieval_hops": 0.7688,
+            "producer_fetches": 744,
+            "producer_path_hops": 5252,
+            "requested_bytes": 2500,
+            "router_cache_hit_ratio": 0.39710538218000907,
+            "router_cache_hits": 1756,
+            "router_cache_misses": 2666,
+            "router_lookups": 4422,
+            "satisfied_requests": 2500,
+            "unsatisfied_requests": 0
+          },
+          "per_node": {
+            "node-0": {
+              "cache": {
+                "byte_hit_ratio": 0.15358361774744028,
+                "bytes_hit": 135,
+                "bytes_requested": 879,
+                "evicted_bytes": 728,
+                "eviction_rate": 0.8282138794084186,
+                "evictions": 728,
+                "expirations": 0,
+                "expired_bytes": 0,
+                "hit_ratio": 0.15358361774744028,
+                "hits": 135,
+                "insertions": 744,
+                "miss_ratio": 0.8464163822525598,
+                "misses": 744,
+                "rejected_bytes": 0,
+                "rejection_rate": 0.0,
+                "rejections": 0,
+                "requests": 879
+              },
+              "final_cache": [
+                "/dataset/item/category-00/000000",
+                "/dataset/item/category-00/000048",
+                "/dataset/item/category-00/000064",
+                "/dataset/item/category-00/000288",
+                "/dataset/item/category-00/000296",
+                "/dataset/item/category-01/000121",
+                "/dataset/item/category-01/000153",
+                "/dataset/item/category-02/000290",
+                "/dataset/item/category-03/000043",
+                "/dataset/item/category-03/000075",
+                "/dataset/item/category-03/000187",
+                "/dataset/item/category-05/000181",
+                "/dataset/item/category-05/000285",
+                "/dataset/item/category-05/000293",
+                "/dataset/item/category-06/000286",
+                "/dataset/item/category-07/000295"
+              ],
+              "forwarding": {
+                "data_forwarded": 879,
+                "data_received": 0,
+                "interests_forwarded": 0,
+                "interests_received": 879,
+                "producer_responses": 744
+              }
+            },
+            "node-1": {
+              "cache": {
+                "byte_hit_ratio": 0.43215211754537597,
+                "bytes_hit": 500,
+                "bytes_requested": 1157,
+                "evicted_bytes": 641,
+                "eviction_rate": 0.554019014693172,
+                "evictions": 641,
+                "expirations": 0,
+                "expired_bytes": 0,
+                "hit_ratio": 0.43215211754537597,
+                "hits": 500,
+                "insertions": 657,
+                "miss_ratio": 0.567847882454624,
+                "misses": 657,
+                "rejected_bytes": 0,
+                "rejection_rate": 0.0,
+                "rejections": 0,
+                "requests": 1157
+              },
+              "final_cache": [
+                "/dataset/item/category-00/000048",
+                "/dataset/item/category-00/000064",
+                "/dataset/item/category-00/000288",
+                "/dataset/item/category-01/000033",
+                "/dataset/item/category-02/000290",
+                "/dataset/item/category-03/000003",
+                "/dataset/item/category-03/000043",
+                "/dataset/item/category-03/000083",
+                "/dataset/item/category-03/000187",
+                "/dataset/item/category-03/000291",
+                "/dataset/item/category-05/000285",
+                "/dataset/item/category-06/000014",
+                "/dataset/item/category-07/000063",
+                "/dataset/item/category-07/000151",
+                "/dataset/item/category-07/000287",
+                "/dataset/item/category-07/000295"
+              ],
+              "forwarding": {
+                "data_forwarded": 398,
+                "data_received": 657,
+                "interests_forwarded": 657,
+                "interests_received": 1157,
+                "producer_responses": 0
+              }
+            },
+            "node-2": {
+              "cache": {
+                "byte_hit_ratio": 0.42485549132947975,
+                "bytes_hit": 294,
+                "bytes_requested": 692,
+                "evicted_bytes": 382,
+                "eviction_rate": 0.5520231213872833,
+                "evictions": 382,
+                "expirations": 0,
+                "expired_bytes": 0,
+                "hit_ratio": 0.42485549132947975,
+                "hits": 294,
+                "insertions": 398,
+                "miss_ratio": 0.5751445086705202,
+                "misses": 398,
+                "rejected_bytes": 0,
+                "rejection_rate": 0.0,
+                "rejections": 0,
+                "requests": 692
+              },
+              "final_cache": [
+                "/dataset/item/category-00/000000",
+                "/dataset/item/category-00/000008",
+                "/dataset/item/category-00/000200",
+                "/dataset/item/category-00/000288",
+                "/dataset/item/category-00/000296",
+                "/dataset/item/category-01/000033",
+                "/dataset/item/category-02/000290",
+                "/dataset/item/category-03/000043",
+                "/dataset/item/category-03/000075",
+                "/dataset/item/category-03/000187",
+                "/dataset/item/category-03/000291",
+                "/dataset/item/category-05/000005",
+                "/dataset/item/category-05/000261",
+                "/dataset/item/category-05/000285",
+                "/dataset/item/category-06/000014",
+                "/dataset/item/category-06/000286"
+              ],
+              "forwarding": {
+                "data_forwarded": 247,
+                "data_received": 398,
+                "interests_forwarded": 398,
+                "interests_received": 692,
+                "producer_responses": 0
+              }
+            },
+            "node-3": {
+              "cache": {
+                "byte_hit_ratio": 0.47780126849894294,
+                "bytes_hit": 226,
+                "bytes_requested": 473,
+                "evicted_bytes": 230,
+                "eviction_rate": 0.48625792811839325,
+                "evictions": 230,
+                "expirations": 1,
+                "expired_bytes": 1,
+                "hit_ratio": 0.47780126849894294,
+                "hits": 226,
+                "insertions": 247,
+                "miss_ratio": 0.5221987315010571,
+                "misses": 247,
+                "rejected_bytes": 0,
+                "rejection_rate": 0.0,
+                "rejections": 0,
+                "requests": 473
+              },
+              "final_cache": [
+                "/dataset/item/category-00/000288",
+                "/dataset/item/category-01/000297",
+                "/dataset/item/category-02/000290",
+                "/dataset/item/category-03/000003",
+                "/dataset/item/category-03/000075",
+                "/dataset/item/category-03/000187",
+                "/dataset/item/category-04/000076",
+                "/dataset/item/category-05/000261",
+                "/dataset/item/category-05/000285",
+                "/dataset/item/category-06/000014",
+                "/dataset/item/category-06/000022",
+                "/dataset/item/category-06/000286",
+                "/dataset/item/category-07/000007",
+                "/dataset/item/category-07/000063",
+                "/dataset/item/category-07/000071",
+                "/dataset/item/category-07/000287"
+              ],
+              "forwarding": {
+                "data_forwarded": 119,
+                "data_received": 247,
+                "interests_forwarded": 247,
+                "interests_received": 473,
+                "producer_responses": 0
+              }
+            },
+            "node-4": {
+              "cache": {
+                "byte_hit_ratio": 0.5993265993265994,
+                "bytes_hit": 178,
+                "bytes_requested": 297,
+                "evicted_bytes": 102,
+                "eviction_rate": 0.3434343434343434,
+                "evictions": 102,
+                "expirations": 1,
+                "expired_bytes": 1,
+                "hit_ratio": 0.5993265993265994,
+                "hits": 178,
+                "insertions": 119,
+                "miss_ratio": 0.4006734006734007,
+                "misses": 119,
+                "rejected_bytes": 0,
+                "rejection_rate": 0.0,
+                "rejections": 0,
+                "requests": 297
+              },
+              "final_cache": [
+                "/dataset/item/category-00/000000",
+                "/dataset/item/category-00/000144",
+                "/dataset/item/category-01/000289",
+                "/dataset/item/category-02/000066",
+                "/dataset/item/category-02/000290",
+                "/dataset/item/category-04/000092",
+                "/dataset/item/category-04/000292",
+                "/dataset/item/category-05/000037",
+                "/dataset/item/category-05/000285",
+                "/dataset/item/category-06/000190",
+                "/dataset/item/category-06/000278",
+                "/dataset/item/category-06/000286",
+                "/dataset/item/category-07/000007",
+                "/dataset/item/category-07/000071",
+                "/dataset/item/category-07/000287",
+                "/dataset/item/category-07/000295"
+              ],
+              "forwarding": {
+                "data_forwarded": 0,
+                "data_received": 119,
+                "interests_forwarded": 119,
+                "interests_received": 297,
+                "producer_responses": 0
+              }
+            },
+            "node-5": {
+              "cache": {
+                "byte_hit_ratio": 0.5564853556485355,
+                "bytes_hit": 133,
+                "bytes_requested": 239,
+                "evicted_bytes": 89,
+                "eviction_rate": 0.3723849372384937,
+                "evictions": 89,
+                "expirations": 1,
+                "expired_bytes": 1,
+                "hit_ratio": 0.5564853556485355,
+                "hits": 133,
+                "insertions": 106,
+                "miss_ratio": 0.4435146443514644,
+                "misses": 106,
+                "rejected_bytes": 0,
+                "rejection_rate": 0.0,
+                "rejections": 0,
+                "requests": 239
+              },
+              "final_cache": [
+                "/dataset/item/category-00/000056",
+                "/dataset/item/category-00/000296",
+                "/dataset/item/category-01/000001",
+                "/dataset/item/category-01/000289",
+                "/dataset/item/category-02/000138",
+                "/dataset/item/category-02/000194",
+                "/dataset/item/category-03/000291",
+                "/dataset/item/category-03/000299",
+                "/dataset/item/category-04/000004",
+                "/dataset/item/category-04/000140",
+                "/dataset/item/category-05/000197",
+                "/dataset/item/category-05/000285",
+                "/dataset/item/category-06/000014",
+                "/dataset/item/category-06/000286",
+                "/dataset/item/category-07/000287",
+                "/dataset/item/category-07/000295"
+              ],
+              "forwarding": {
+                "data_forwarded": 0,
+                "data_received": 106,
+                "interests_forwarded": 106,
+                "interests_received": 239,
+                "producer_responses": 0
+              }
+            },
+            "node-6": {
+              "cache": {
+                "byte_hit_ratio": 0.4851190476190476,
+                "bytes_hit": 163,
+                "bytes_requested": 336,
+                "evicted_bytes": 156,
+                "eviction_rate": 0.4642857142857143,
+                "evictions": 156,
+                "expirations": 1,
+                "expired_bytes": 1,
+                "hit_ratio": 0.4851190476190476,
+                "hits": 163,
+                "insertions": 173,
+                "miss_ratio": 0.5148809523809523,
+                "misses": 173,
+                "rejected_bytes": 0,
+                "rejection_rate": 0.0,
+                "rejections": 0,
+                "requests": 336
+              },
+              "final_cache": [
+                "/dataset/item/category-00/000000",
+                "/dataset/item/category-00/000056",
+                "/dataset/item/category-00/000288",
+                "/dataset/item/category-00/000296",
+                "/dataset/item/category-01/000153",
+                "/dataset/item/category-01/000289",
+                "/dataset/item/category-02/000010",
+                "/dataset/item/category-02/000194",
+                "/dataset/item/category-02/000290",
+                "/dataset/item/category-03/000123",
+                "/dataset/item/category-03/000179",
+                "/dataset/item/category-04/000292",
+                "/dataset/item/category-05/000013",
+                "/dataset/item/category-06/000014",
+                "/dataset/item/category-06/000110",
+                "/dataset/item/category-06/000254"
+              ],
+              "forwarding": {
+                "data_forwarded": 106,
+                "data_received": 173,
+                "interests_forwarded": 173,
+                "interests_received": 336,
+                "producer_responses": 0
+              }
+            },
+            "node-7": {
+              "cache": {
+                "byte_hit_ratio": 0.3638968481375358,
+                "bytes_hit": 127,
+                "bytes_requested": 349,
+                "evicted_bytes": 206,
+                "eviction_rate": 0.5902578796561605,
+                "evictions": 206,
+                "expirations": 0,
+                "expired_bytes": 0,
+                "hit_ratio": 0.3638968481375358,
+                "hits": 127,
+                "insertions": 222,
+                "miss_ratio": 0.6361031518624641,
+                "misses": 222,
+                "rejected_bytes": 0,
+                "rejection_rate": 0.0,
+                "rejections": 0,
+                "requests": 349
+              },
+              "final_cache": [
+                "/dataset/item/category-00/000000",
+                "/dataset/item/category-00/000056",
+                "/dataset/item/category-00/000296",
+                "/dataset/item/category-01/000289",
+                "/dataset/item/category-01/000297",
+                "/dataset/item/category-02/000010",
+                "/dataset/item/category-02/000058",
+                "/dataset/item/category-02/000290",
+                "/dataset/item/category-03/000019",
+                "/dataset/item/category-04/000028",
+                "/dataset/item/category-04/000292",
+                "/dataset/item/category-05/000013",
+                "/dataset/item/category-05/000173",
+                "/dataset/item/category-05/000285",
+                "/dataset/item/category-06/000254",
+                "/dataset/item/category-07/000295"
+              ],
+              "forwarding": {
+                "data_forwarded": 173,
+                "data_received": 222,
+                "interests_forwarded": 222,
+                "interests_received": 349,
+                "producer_responses": 0
+              }
+            }
+          },
+          "topology": {
+            "adjacency": {
+              "node-0": [
+                "node-1",
+                "node-7"
+              ],
+              "node-1": [
+                "node-0",
+                "node-2"
+              ],
+              "node-2": [
+                "node-1",
+                "node-3"
+              ],
+              "node-3": [
+                "node-2",
+                "node-4"
+              ],
+              "node-4": [
+                "node-3",
+                "node-5"
+              ],
+              "node-5": [
+                "node-4",
+                "node-6"
+              ],
+              "node-6": [
+                "node-5",
+                "node-7"
+              ],
+              "node-7": [
+                "node-0",
+                "node-6"
+              ]
+            },
+            "edges": [
+              [
+                "node-0",
+                "node-1"
+              ],
+              [
+                "node-0",
+                "node-7"
+              ],
+              [
+                "node-1",
+                "node-2"
+              ],
+              [
+                "node-2",
+                "node-3"
+              ],
+              [
+                "node-3",
+                "node-4"
+              ],
+              [
+                "node-4",
+                "node-5"
+              ],
+              [
+                "node-5",
+                "node-6"
+              ],
+              [
+                "node-6",
+                "node-7"
+              ]
+            ],
+            "fib": {
+              "node-0": {},
+              "node-1": {
+                "/dataset/item": "node-0"
+              },
+              "node-2": {
+                "/dataset/item": "node-1"
+              },
+              "node-3": {
+                "/dataset/item": "node-2"
+              },
+              "node-4": {
+                "/dataset/item": "node-3"
+              },
+              "node-5": {
+                "/dataset/item": "node-6"
+              },
+              "node-6": {
+                "/dataset/item": "node-7"
+              },
+              "node-7": {
+                "/dataset/item": "node-0"
+              }
+            },
+            "kind": "ring",
+            "nodes": [
+              "node-0",
+              "node-1",
+              "node-2",
+              "node-3",
+              "node-4",
+              "node-5",
+              "node-6",
+              "node-7"
+            ],
+            "producers": {
+              "/dataset/item": "node-0"
+            }
+          },
+          "updates": []
+        }
+      },
+      "checkpoint": {
+        "path": "artifacts\\v010_moderate_seed29\\models\\ring.pt",
+        "sha256": "5ba823e74837a256b21a1455c7f492442bccaf380f0015cb13decae7973c3be2"
+      },
+      "model_config": {
+        "context_hidden_dim": 64,
+        "context_layers": 1,
+        "dropout": 0.0,
+        "embedding_dim": 32,
+        "feature_dim": 8,
+        "head_hidden_dim": 64,
+        "max_name_components": 16,
+        "name_hidden_dim": 48,
+        "popularity_prior_weight": 1.0,
+        "recency_prior_weight": 0.0,
+        "residual_scale": 0.05,
+        "vocab_size": 4096
+      },
+      "neural_test": {
+        "controller_efficiency": {
+          "max_resident_candidates_scored": 8,
+          "replacement_decisions": 2074,
+          "resident_candidates_available": 33184,
+          "resident_candidates_scored": 16592,
+          "resident_scoring_reduction_ratio": 0.5,
+          "shortlist_activations": 2074,
+          "total_candidates_scored": 16592
+        },
+        "network_metrics": {
+          "byte_cache_hit_ratio": 0.7464,
+          "cache_hit_bytes": 1866,
+          "cache_hit_ratio": 0.7464,
+          "cache_hit_requests": 1866,
+          "consumer_requests": 2500,
+          "data_hops": 1573,
+          "hop_savings_ratio": 0.7004950495049505,
+          "interest_hops": 1573,
+          "mean_retrieval_hops": 0.6292,
+          "producer_fetches": 634,
+          "producer_path_hops": 5252,
+          "requested_bytes": 2500,
+          "router_cache_hit_ratio": 0.4581389639086668,
+          "router_cache_hits": 1866,
+          "router_cache_misses": 2207,
+          "router_lookups": 4073,
+          "satisfied_requests": 2500,
+          "unsatisfied_requests": 0
+        },
+        "per_node": {
+          "node-0": {
+            "cache": {
+              "byte_hit_ratio": 0.09815078236130868,
+              "bytes_hit": 69,
+              "bytes_requested": 703,
+              "evicted_bytes": 618,
+              "eviction_rate": 0.8790896159317212,
+              "evictions": 618,
+              "expirations": 0,
+              "expired_bytes": 0,
+              "hit_ratio": 0.09815078236130868,
+              "hits": 69,
+              "insertions": 634,
+              "miss_ratio": 0.9018492176386913,
+              "misses": 634,
+              "rejected_bytes": 0,
+              "rejection_rate": 0.0,
+              "rejections": 0,
+              "requests": 703
+            },
+            "final_cache": [
+              "/dataset/item/category-00/000048",
+              "/dataset/item/category-00/000064",
+              "/dataset/item/category-00/000296",
+              "/dataset/item/category-01/000289",
+              "/dataset/item/category-02/000290",
+              "/dataset/item/category-03/000019",
+              "/dataset/item/category-03/000043",
+              "/dataset/item/category-03/000187",
+              "/dataset/item/category-03/000291",
+              "/dataset/item/category-03/000299",
+              "/dataset/item/category-04/000028",
+              "/dataset/item/category-04/000292",
+              "/dataset/item/category-05/000181",
+              "/dataset/item/category-06/000254",
+              "/dataset/item/category-07/000007",
+              "/dataset/item/category-07/000295"
+            ],
+            "forwarding": {
+              "data_forwarded": 703,
+              "data_received": 0,
+              "interests_forwarded": 0,
+              "interests_received": 703,
+              "producer_responses": 634
+            }
+          },
+          "node-1": {
+            "cache": {
+              "byte_hit_ratio": 0.5198889916743756,
+              "bytes_hit": 562,
+              "bytes_requested": 1081,
+              "evicted_bytes": 503,
+              "eviction_rate": 0.4653098982423682,
+              "evictions": 503,
+              "expirations": 0,
+              "expired_bytes": 0,
+              "hit_ratio": 0.5198889916743756,
+              "hits": 562,
+              "insertions": 519,
+              "miss_ratio": 0.4801110083256244,
+              "misses": 519,
+              "rejected_bytes": 0,
+              "rejection_rate": 0.0,
+              "rejections": 0,
+              "requests": 1081
+            },
+            "final_cache": [
+              "/dataset/item/category-00/000048",
+              "/dataset/item/category-00/000064",
+              "/dataset/item/category-01/000289",
+              "/dataset/item/category-02/000290",
+              "/dataset/item/category-03/000043",
+              "/dataset/item/category-03/000163",
+              "/dataset/item/category-03/000187",
+              "/dataset/item/category-03/000291",
+              "/dataset/item/category-03/000299",
+              "/dataset/item/category-05/000181",
+              "/dataset/item/category-05/000285",
+              "/dataset/item/category-06/000286",
+              "/dataset/item/category-07/000063",
+              "/dataset/item/category-07/000151",
+              "/dataset/item/category-07/000287",
+              "/dataset/item/category-07/000295"
+            ],
+            "forwarding": {
+              "data_forwarded": 322,
+              "data_received": 519,
+              "interests_forwarded": 519,
+              "interests_received": 1081,
+              "producer_responses": 0
+            }
+          },
+          "node-2": {
+            "cache": {
+              "byte_hit_ratio": 0.5083969465648855,
+              "bytes_hit": 333,
+              "bytes_requested": 655,
+              "evicted_bytes": 306,
+              "eviction_rate": 0.467175572519084,
+              "evictions": 306,
+              "expirations": 0,
+              "expired_bytes": 0,
+              "hit_ratio": 0.5083969465648855,
+              "hits": 333,
+              "insertions": 322,
+              "miss_ratio": 0.4916030534351145,
+              "misses": 322,
+              "rejected_bytes": 0,
+              "rejection_rate": 0.0,
+              "rejections": 0,
+              "requests": 655
+            },
+            "final_cache": [
+              "/dataset/item/category-00/000008",
+              "/dataset/item/category-00/000288",
+              "/dataset/item/category-00/000296",
+              "/dataset/item/category-01/000033",
+              "/dataset/item/category-02/000082",
+              "/dataset/item/category-02/000290",
+              "/dataset/item/category-03/000043",
+              "/dataset/item/category-03/000187",
+              "/dataset/item/category-03/000291",
+              "/dataset/item/category-03/000299",
+              "/dataset/item/category-05/000285",
+              "/dataset/item/category-06/000286",
+              "/dataset/item/category-07/000007",
+              "/dataset/item/category-07/000063",
+              "/dataset/item/category-07/000287",
+              "/dataset/item/category-07/000295"
+            ],
+            "forwarding": {
+              "data_forwarded": 210,
+              "data_received": 322,
+              "interests_forwarded": 322,
+              "interests_received": 655,
+              "producer_responses": 0
+            }
+          },
+          "node-3": {
+            "cache": {
+              "byte_hit_ratio": 0.5364238410596026,
+              "bytes_hit": 243,
+              "bytes_requested": 453,
+              "evicted_bytes": 192,
+              "eviction_rate": 0.423841059602649,
+              "evictions": 192,
+              "expirations": 2,
+              "expired_bytes": 2,
+              "hit_ratio": 0.5364238410596026,
+              "hits": 243,
+              "insertions": 210,
+              "miss_ratio": 0.46357615894039733,
+              "misses": 210,
+              "rejected_bytes": 0,
+              "rejection_rate": 0.0,
+              "rejections": 0,
+              "requests": 453
+            },
+            "final_cache": [
+              "/dataset/item/category-00/000288",
+              "/dataset/item/category-01/000289",
+              "/dataset/item/category-02/000050",
+              "/dataset/item/category-02/000290",
+              "/dataset/item/category-03/000003",
+              "/dataset/item/category-03/000027",
+              "/dataset/item/category-03/000043",
+              "/dataset/item/category-03/000075",
+              "/dataset/item/category-03/000187",
+              "/dataset/item/category-05/000021",
+              "/dataset/item/category-05/000285",
+              "/dataset/item/category-06/000014",
+              "/dataset/item/category-06/000286",
+              "/dataset/item/category-07/000063",
+              "/dataset/item/category-07/000287",
+              "/dataset/item/category-07/000295"
+            ],
+            "forwarding": {
+              "data_forwarded": 99,
+              "data_received": 210,
+              "interests_forwarded": 210,
+              "interests_received": 453,
+              "producer_responses": 0
+            }
+          },
+          "node-4": {
+            "cache": {
+              "byte_hit_ratio": 0.6666666666666666,
+              "bytes_hit": 198,
+              "bytes_requested": 297,
+              "evicted_bytes": 82,
+              "eviction_rate": 0.2760942760942761,
+              "evictions": 82,
+              "expirations": 1,
+              "expired_bytes": 1,
+              "hit_ratio": 0.6666666666666666,
+              "hits": 198,
+              "insertions": 99,
+              "miss_ratio": 0.3333333333333333,
+              "misses": 99,
+              "rejected_bytes": 0,
+              "rejection_rate": 0.0,
+              "rejections": 0,
+              "requests": 297
+            },
+            "final_cache": [
+              "/dataset/item/category-00/000000",
+              "/dataset/item/category-00/000144",
+              "/dataset/item/category-01/000017",
+              "/dataset/item/category-01/000289",
+              "/dataset/item/category-02/000290",
+              "/dataset/item/category-05/000037",
+              "/dataset/item/category-05/000285",
+              "/dataset/item/category-06/000006",
+              "/dataset/item/category-06/000022",
+              "/dataset/item/category-06/000094",
+              "/dataset/item/category-06/000286",
+              "/dataset/item/category-07/000007",
+              "/dataset/item/category-07/000063",
+              "/dataset/item/category-07/000071",
+              "/dataset/item/category-07/000287",
+              "/dataset/item/category-07/000295"
+            ],
+            "forwarding": {
+              "data_forwarded": 0,
+              "data_received": 99,
+              "interests_forwarded": 99,
+              "interests_received": 297,
+              "producer_responses": 0
+            }
+          },
+          "node-5": {
+            "cache": {
+              "byte_hit_ratio": 0.606694560669456,
+              "bytes_hit": 145,
+              "bytes_requested": 239,
+              "evicted_bytes": 76,
+              "eviction_rate": 0.3179916317991632,
+              "evictions": 76,
+              "expirations": 2,
+              "expired_bytes": 2,
+              "hit_ratio": 0.606694560669456,
+              "hits": 145,
+              "insertions": 94,
+              "miss_ratio": 0.39330543933054396,
+              "misses": 94,
+              "rejected_bytes": 0,
+              "rejection_rate": 0.0,
+              "rejections": 0,
+              "requests": 239
+            },
+            "final_cache": [
+              "/dataset/item/category-00/000056",
+              "/dataset/item/category-00/000288",
+              "/dataset/item/category-00/000296",
+              "/dataset/item/category-01/000001",
+              "/dataset/item/category-01/000289",
+              "/dataset/item/category-02/000018",
+              "/dataset/item/category-02/000026",
+              "/dataset/item/category-02/000194",
+              "/dataset/item/category-03/000019",
+              "/dataset/item/category-03/000035",
+              "/dataset/item/category-03/000291",
+              "/dataset/item/category-05/000285",
+              "/dataset/item/category-06/000014",
+              "/dataset/item/category-06/000270",
+              "/dataset/item/category-07/000287",
+              "/dataset/item/category-07/000295"
+            ],
+            "forwarding": {
+              "data_forwarded": 0,
+              "data_received": 94,
+              "interests_forwarded": 94,
+              "interests_received": 239,
+              "producer_responses": 0
+            }
+          },
+          "node-6": {
+            "cache": {
+              "byte_hit_ratio": 0.5524691358024691,
+              "bytes_hit": 179,
+              "bytes_requested": 324,
+              "evicted_bytes": 129,
+              "eviction_rate": 0.39814814814814814,
+              "evictions": 129,
+              "expirations": 0,
+              "expired_bytes": 0,
+              "hit_ratio": 0.5524691358024691,
+              "hits": 179,
+              "insertions": 145,
+              "miss_ratio": 0.44753086419753085,
+              "misses": 145,
+              "rejected_bytes": 0,
+              "rejection_rate": 0.0,
+              "rejections": 0,
+              "requests": 324
+            },
+            "final_cache": [
+              "/dataset/item/category-00/000056",
+              "/dataset/item/category-00/000288",
+              "/dataset/item/category-00/000296",
+              "/dataset/item/category-01/000009",
+              "/dataset/item/category-01/000153",
+              "/dataset/item/category-01/000289",
+              "/dataset/item/category-02/000010",
+              "/dataset/item/category-02/000194",
+              "/dataset/item/category-02/000274",
+              "/dataset/item/category-02/000290",
+              "/dataset/item/category-03/000171",
+              "/dataset/item/category-04/000292",
+              "/dataset/item/category-05/000013",
+              "/dataset/item/category-05/000285",
+              "/dataset/item/category-06/000254",
+              "/dataset/item/category-07/000287"
+            ],
+            "forwarding": {
+              "data_forwarded": 94,
+              "data_received": 145,
+              "interests_forwarded": 145,
+              "interests_received": 324,
+              "producer_responses": 0
+            }
+          },
+          "node-7": {
+            "cache": {
+              "byte_hit_ratio": 0.42679127725856697,
+              "bytes_hit": 137,
+              "bytes_requested": 321,
+              "evicted_bytes": 168,
+              "eviction_rate": 0.5233644859813084,
+              "evictions": 168,
+              "expirations": 0,
+              "expired_bytes": 0,
+              "hit_ratio": 0.42679127725856697,
+              "hits": 137,
+              "insertions": 184,
+              "miss_ratio": 0.573208722741433,
+              "misses": 184,
+              "rejected_bytes": 0,
+              "rejection_rate": 0.0,
+              "rejections": 0,
+              "requests": 321
+            },
+            "final_cache": [
+              "/dataset/item/category-00/000056",
+              "/dataset/item/category-00/000296",
+              "/dataset/item/category-01/000001",
+              "/dataset/item/category-02/000058",
+              "/dataset/item/category-02/000194",
+              "/dataset/item/category-02/000290",
+              "/dataset/item/category-03/000019",
+              "/dataset/item/category-03/000243",
+              "/dataset/item/category-04/000028",
+              "/dataset/item/category-04/000292",
+              "/dataset/item/category-05/000013",
+              "/dataset/item/category-05/000221",
+              "/dataset/item/category-05/000285",
+              "/dataset/item/category-06/000254",
+              "/dataset/item/category-07/000287",
+              "/dataset/item/category-07/000295"
+            ],
+            "forwarding": {
+              "data_forwarded": 145,
+              "data_received": 184,
+              "interests_forwarded": 184,
+              "interests_received": 321,
+              "producer_responses": 0
+            }
+          }
+        },
+        "topology": {
+          "adjacency": {
+            "node-0": [
+              "node-1",
+              "node-7"
+            ],
+            "node-1": [
+              "node-0",
+              "node-2"
+            ],
+            "node-2": [
+              "node-1",
+              "node-3"
+            ],
+            "node-3": [
+              "node-2",
+              "node-4"
+            ],
+            "node-4": [
+              "node-3",
+              "node-5"
+            ],
+            "node-5": [
+              "node-4",
+              "node-6"
+            ],
+            "node-6": [
+              "node-5",
+              "node-7"
+            ],
+            "node-7": [
+              "node-0",
+              "node-6"
+            ]
+          },
+          "edges": [
+            [
+              "node-0",
+              "node-1"
+            ],
+            [
+              "node-0",
+              "node-7"
+            ],
+            [
+              "node-1",
+              "node-2"
+            ],
+            [
+              "node-2",
+              "node-3"
+            ],
+            [
+              "node-3",
+              "node-4"
+            ],
+            [
+              "node-4",
+              "node-5"
+            ],
+            [
+              "node-5",
+              "node-6"
+            ],
+            [
+              "node-6",
+              "node-7"
+            ]
+          ],
+          "fib": {
+            "node-0": {},
+            "node-1": {
+              "/dataset/item": "node-0"
+            },
+            "node-2": {
+              "/dataset/item": "node-1"
+            },
+            "node-3": {
+              "/dataset/item": "node-2"
+            },
+            "node-4": {
+              "/dataset/item": "node-3"
+            },
+            "node-5": {
+              "/dataset/item": "node-6"
+            },
+            "node-6": {
+              "/dataset/item": "node-7"
+            },
+            "node-7": {
+              "/dataset/item": "node-0"
+            }
+          },
+          "kind": "ring",
+          "nodes": [
+            "node-0",
+            "node-1",
+            "node-2",
+            "node-3",
+            "node-4",
+            "node-5",
+            "node-6",
+            "node-7"
+          ],
+          "producers": {
+            "/dataset/item": "node-0"
+          }
+        },
+        "updates": []
+      },
+      "pretrained_checkpoint": {
+        "path": "artifacts\\v010_moderate_seed29\\models\\ring-pretrained.pt",
+        "sha256": "05f081c7f19fa4fd7247a13808fd7395511bbb35dbbc55e30ce93fd340912768"
+      },
+      "pretraining": {
+        "behavior_policy": "lru",
+        "best_epoch": 0,
+        "best_validation_hit_ratio": 0.7356,
+        "epochs": [
+          {
+            "calibration_batches": 185,
+            "calibration_examples": 11788,
+            "epoch": 1,
+            "mean_ranking_loss": 0.6604263406460275,
+            "ranking_pairs": 178483,
+            "validation_hit_ratio": 0.7356
+          }
+        ],
+        "external_training_requests": 15000,
+        "initial_validation_hit_ratio": 0.7356,
+        "observation_requests": 24362,
+        "router_observations": 24362
+      },
+      "resumed": false,
+      "topology": {
+        "adjacency": {
+          "node-0": [
+            "node-1",
+            "node-7"
+          ],
+          "node-1": [
+            "node-0",
+            "node-2"
+          ],
+          "node-2": [
+            "node-1",
+            "node-3"
+          ],
+          "node-3": [
+            "node-2",
+            "node-4"
+          ],
+          "node-4": [
+            "node-3",
+            "node-5"
+          ],
+          "node-5": [
+            "node-4",
+            "node-6"
+          ],
+          "node-6": [
+            "node-5",
+            "node-7"
+          ],
+          "node-7": [
+            "node-0",
+            "node-6"
+          ]
+        },
+        "edges": [
+          [
+            "node-0",
+            "node-1"
+          ],
+          [
+            "node-0",
+            "node-7"
+          ],
+          [
+            "node-1",
+            "node-2"
+          ],
+          [
+            "node-2",
+            "node-3"
+          ],
+          [
+            "node-3",
+            "node-4"
+          ],
+          [
+            "node-4",
+            "node-5"
+          ],
+          [
+            "node-5",
+            "node-6"
+          ],
+          [
+            "node-6",
+            "node-7"
+          ]
+        ],
+        "fib": {
+          "node-0": {},
+          "node-1": {
+            "/dataset/item": "node-0"
+          },
+          "node-2": {
+            "/dataset/item": "node-1"
+          },
+          "node-3": {
+            "/dataset/item": "node-2"
+          },
+          "node-4": {
+            "/dataset/item": "node-3"
+          },
+          "node-5": {
+            "/dataset/item": "node-6"
+          },
+          "node-6": {
+            "/dataset/item": "node-7"
+          },
+          "node-7": {
+            "/dataset/item": "node-0"
+          }
+        },
+        "kind": "ring",
+        "nodes": [
+          "node-0",
+          "node-1",
+          "node-2",
+          "node-3",
+          "node-4",
+          "node-5",
+          "node-6",
+          "node-7"
+        ],
+        "producers": {
+          "/dataset/item": "node-0"
+        }
+      },
+      "training": {
+        "best_epoch": 0,
+        "best_validation_cache_hit_ratio": 0.7356,
+        "epochs": [
+          {
+            "epoch": 1,
+            "mean_loss": 0.011394405598652416,
+            "train_byte_cache_hit_ratio": 0.7349333333333333,
+            "train_cache_hit_ratio": 0.7349333333333333,
+            "updates": 35,
+            "validation_cache_hit_ratio": 0.7356
+          }
+        ],
+        "initial_validation_cache_hit_ratio": 0.7356
+      }
+    }
+  },
+  "topology_recency_prior_overrides": {},
+  "trace": {
+    "input_file_sha256": null,
+    "partition_digests": {
+      "test": "c10f344eb3d62c8d66c36ae4e25b68bdf714dabfed6c6ba795ffe18bd84f029e",
+      "train": "f9a6a75ff3ca03add51b3029ce55b5f604feaa612960c3ffeabf864ab6f2996d",
+      "validation": "7660666740585a50edce962e68f866f0f22cf1f7485a7299e41d4dc53c5627f8"
+    },
+    "seed": 29,
+    "sha256": "fb3c76957fcbff578f180a848c846a0a66b0d20eb02a0c79f1045aafc94fe560",
+    "source": "synthetic",
+    "synthetic_config": {
+      "catalog_size": 300,
+      "drift_fraction": 0.05,
+      "drift_interval": 1000,
+      "fixed_object_size": 1,
+      "locality_decay": 0.88,
+      "locality_window": 64,
+      "max_freshness_period": 300.0,
+      "max_object_size": 65536,
+      "min_freshness_period": 2.0,
+      "min_object_size": 512,
+      "must_be_fresh": true,
+      "name_prefix": "/dataset/item",
+      "node_ids": [
+        "node-1",
+        "node-2",
+        "node-3",
+        "node-4",
+        "node-5",
+        "node-6",
+        "node-7"
+      ],
+      "node_weights": [
+        1.0,
+        0.6155722066724582,
+        0.4634630567719698,
+        0.37892914162759955,
+        0.3241313193385525,
+        0.28529497656828423,
+        0.2561128517887139
+      ],
+      "num_name_categories": 8,
+      "num_nodes": 7,
+      "num_requests": 20000,
+      "request_rate": 20.0,
+      "seed": 29,
+      "start_time": 0.0,
+      "temporal_locality": 0.45,
+      "zipf_alpha": 1.1
+    },
+    "test_requests": 2500,
+    "total_requests": 20000,
+    "train_requests": 15000,
+    "uniform_packet_size": 1,
+    "unique_packet_sizes": [
+      1
+    ],
+    "validation_requests": 2500
+  },
+  "training_mode": "topology-specific-supervised-pretraining-then-online-reinforce"
+}
